@@ -328,6 +328,16 @@ public class DragonUtils {
         }
         return false;
     }
+    
+    // The new function to check if an animal is tamed, doesn't matter who is the owner.
+    public static boolean hasOwnerOrIsTamed(Entity entity)
+    {
+	    if (entity instanceof TameableEntity) {
+	        TameableEntity tameable = (TameableEntity) entity;
+	        return (tameable.getOwnerId() != null || tameable.isTamed());
+	    }
+	    return false;
+    }
 
     public static boolean isAlive(LivingEntity entity) {
         if (entity instanceof EntityDragonBase && ((EntityDragonBase) entity).isMobDead()){

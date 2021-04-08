@@ -92,7 +92,8 @@ public class IafDragonDestructionManager {
 				(double) center.getZ() + damageRadius
 			)
 		).stream().forEach(LivingEntity -> {
-            if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) {
+            //if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) { // < ORIGINAL
+            if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity) && !DragonUtils.hasOwnerOrIsTamed(LivingEntity)) { // < NEW
                 LivingEntity.attackEntityFrom(IafDamageRegistry.DRAGON_FIRE, stageDmg);
                 LivingEntity.setFire(statusDuration);
             }
@@ -165,7 +166,8 @@ public class IafDragonDestructionManager {
 				(double) center.getZ() + damageRadius
 			)
 		).stream().forEach(LivingEntity -> {
-            if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) {
+            //if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) { // < ORIGINAL
+            if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity) && !DragonUtils.hasOwnerOrIsTamed(LivingEntity)) { // < NEW
                 LivingEntity.attackEntityFrom(IafDamageRegistry.DRAGON_ICE, stageDmg);
                 FrozenEntityProperties frozenProps = EntityPropertiesHandler.INSTANCE.getProperties(LivingEntity, FrozenEntityProperties.class);
                 if (frozenProps != null) {
@@ -248,7 +250,8 @@ public class IafDragonDestructionManager {
     				(double) center.getZ() + l
 				)
     		).stream().forEach(LivingEntity -> {
-                if (!destroyer.isOnSameTeam(LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) {
+                //if (!destroyer.isOnSameTeam(LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) { // < ORIGINAL
+                if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity) && !DragonUtils.hasOwnerOrIsTamed(LivingEntity)) { // < NEW
                     LivingEntity.attackEntityFrom(IafDamageRegistry.DRAGON_FIRE, stageDmg);
                     LivingEntity.setFire(statusDuration);
                 }
@@ -335,7 +338,8 @@ public class IafDragonDestructionManager {
     				(double) center.getZ() + l
 				)
     		).stream().forEach(LivingEntity -> {
-                if (!destroyer.isOnSameTeam(LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) {
+                //if (!destroyer.isOnSameTeam(LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) { // < ORIGINAL
+                if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity) && !DragonUtils.hasOwnerOrIsTamed(LivingEntity)) { // < NEW
                     LivingEntity.attackEntityFrom(IafDamageRegistry.DRAGON_ICE, stageDmg);
                     FrozenEntityProperties frozenProps = EntityPropertiesHandler.INSTANCE.getProperties(LivingEntity, FrozenEntityProperties.class);
                     if (frozenProps != null) {
@@ -411,7 +415,8 @@ public class IafDragonDestructionManager {
 				(double) center.getZ() + damageRadius
 			)
 		).stream().forEach(LivingEntity -> {
-            if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) {
+            //if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) { // < ORIGINAL
+            if (!DragonUtils.onSameTeam(destroyer, LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity) && !DragonUtils.hasOwnerOrIsTamed(LivingEntity)) { // < NEW
                 LivingEntity.attackEntityFrom(IafDamageRegistry.DRAGON_LIGHTNING, stageDmg);
                 double d1 = destroyer.getPosX() - LivingEntity.getPosX();
                 double d0 = destroyer.getPosZ() - LivingEntity.getPosZ();
@@ -484,7 +489,8 @@ public class IafDragonDestructionManager {
     				(double) center.getZ() + l
 				)
     		).stream().forEach(LivingEntity -> {
-                if (!destroyer.isOnSameTeam(LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) {
+                //if (!destroyer.isOnSameTeam(LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity)) { // < ORIGINAL
+    			if (!destroyer.isOnSameTeam(LivingEntity) && !destroyer.isEntityEqual(LivingEntity) && destroyer.canEntityBeSeen(LivingEntity) && !DragonUtils.hasOwnerOrIsTamed(LivingEntity)) { // < NEW
                     LivingEntity.attackEntityFrom(IafDamageRegistry.DRAGON_LIGHTNING, stageDmg);
                     double d1 = destroyer.getPosX() - LivingEntity.getPosX();
                     double d0 = destroyer.getPosZ() - LivingEntity.getPosZ();

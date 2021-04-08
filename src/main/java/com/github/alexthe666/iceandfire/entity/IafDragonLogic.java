@@ -10,6 +10,7 @@ import com.github.alexthe666.iceandfire.misc.IafSoundRegistry;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.pathfinding.PathPoint;
@@ -60,7 +61,8 @@ public class IafDragonLogic {
             if (dragon.getAnimation() != EntityDragonBase.ANIMATION_BITE) {
                 dragon.setAnimation(EntityDragonBase.ANIMATION_BITE);
             }
-            if (target != null && !DragonUtils.hasSameOwner(dragon, target)) {
+            // if (target != null && !DragonUtils.hasSameOwner(dragon, target)) { 	// < ORIGINAL
+            if (target != null && !DragonUtils.hasOwnerOrIsTamed(target)) {			// < Remove to go back to default
                 target.attackEntityFrom(DamageSource.causeMobDamage(dragon), ((int) dragon.getAttribute(Attributes.ATTACK_DAMAGE).getValue()));
             }
         }

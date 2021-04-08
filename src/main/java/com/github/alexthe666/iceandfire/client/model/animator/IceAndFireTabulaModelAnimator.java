@@ -7,7 +7,7 @@ import com.github.alexthe666.iceandfire.util.IAFMath;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import javafx.scene.control.Tab;
+//import javafx.scene.control.Tab;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.HashMap;

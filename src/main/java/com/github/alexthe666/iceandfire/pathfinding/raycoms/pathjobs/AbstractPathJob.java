@@ -6,8 +6,9 @@ package com.github.alexthe666.iceandfire.pathfinding.raycoms.pathjobs;
 import com.github.alexthe666.iceandfire.IafConfig;
 import com.github.alexthe666.iceandfire.IceAndFire;
 import com.github.alexthe666.iceandfire.pathfinding.raycoms.*;
+import com.github.alexthe666.iceandfire.util.Pair;
 
-import javafx.util.Pair;
+//import javafx.util.Pair;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;

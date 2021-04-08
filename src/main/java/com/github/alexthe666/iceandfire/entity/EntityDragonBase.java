@@ -2195,15 +2195,21 @@ public abstract class EntityDragonBase extends TameableEntity implements IPassab
 
     @Override
     public boolean shouldAttackEntity(LivingEntity target, LivingEntity owner) {
-        if (this.isTamed() && target instanceof TameableEntity) {
-            TameableEntity tamableTarget = (TameableEntity) target;
-            UUID targetOwner = tamableTarget.getOwnerId();
-            if (targetOwner != null && targetOwner.equals(this.getOwnerId())) {
-                return false;
-            }
-        }
-        return super.shouldAttackEntity(target, owner);
-    }
+//      if (this.isTamed() && target instanceof TameableEntity) {					// <
+//      TameableEntity tamableTarget = (TameableEntity) target;						// |
+//      UUID targetOwner = tamableTarget.getOwnerId();								// |
+//      if (targetOwner != null && targetOwner.equals(this.getOwnerId())) { 		// | ORIGINAL
+//          return false;															// | 
+//      } 																			// <
+    	if (this.isTamed())															// <
+    	{																			// |
+    		if (DragonUtils.hasOwnerOrIsTamed(target))								// |
+    		{																		// | NEW
+    			return false;														// |
+    		}																		// |
+    	}																			// <
+    	return super.shouldAttackEntity(target, owner);
+	}
 
     public boolean canAttack(LivingEntity target) {
         return super.canAttack(target) && DragonUtils.isAlive(target);
